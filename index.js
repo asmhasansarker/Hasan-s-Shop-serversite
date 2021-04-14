@@ -54,15 +54,7 @@ client.connect((err) => {
     });
   });
 
-  // app.get('/product/:productKey', (req, res) => {
-  //   const Key = ObjectID(req.params.productKey);
-  //   // console.log(id)
-  //   productsCollection.find({ productKey: Key }) 
-  //   .toArray((err, documents) =>{
-  //     res.send(documents)
-  //   })
-    
-  // });
+
 
   app.post("/addProduct", (req, res) => {
     const newProduct = req.body;
@@ -76,7 +68,8 @@ client.connect((err) => {
 
 
   app.patch('/update/:id', (req, res) =>{
-    // console.log((req.body).toString())
+    // console.log(req.body)
+
     productsCollection.updateOne({_id: ObjectID(req.params.id)},
     {
       $set : { productName: req.body.productNewName, productPrice: req.body.productNewPrice }
